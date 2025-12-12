@@ -41,10 +41,17 @@ const init = async () => {
     return connection
 }
 
-const handleInput = async (jsonString, connection) => {
+const handleInput = async (peerData, connection) => {
+    const [jsonString, candidate] = peerData.split('POOPY_BALLS')
     const desc = JSON.parse(jsonString)
 
     await connection.setRemoteDescription(desc)
+
+    await connection.addIceCandidate({
+        candidate,
+        sdpMLineIndex: 0,
+        sdpMid: '0',
+    })
 }
 
 init().then((connection) => {
