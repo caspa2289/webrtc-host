@@ -25,6 +25,7 @@ const init = async () => {
     }
 
     connection.onicecandidate = (event) => {
+        console.log(event.candidate)
         if (event.candidate && !candidateDescription) {
             connection.addIceCandidate(event.candidate)
             candidateDescription = event.candidate.candidate
