@@ -3,7 +3,7 @@ let candidateDescription = null
 let dataChannel = null
 
 const handleMessage = (event) => {
-    console.log(event.data)
+    console.log(new Float64Array(event.data))
 }
 
 const init = async () => {
